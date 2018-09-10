@@ -23,15 +23,15 @@ namespace SchemaAssociationNotification {
 export function activate(context: ExtensionContext) {
 
 	// The server is implemented in node
-	let serverModule = context.asAbsolutePath(path.join('node_modules', 'yaml-language-server', 'out', 'server', 'src', 'server.js'));
+	let serverModule = path.join('E:/Learning/projects', 'yaml-language-server', 'out', 'server', 'src', 'server.js');
 
 	// The debug options for the server
-	let debugOptions = { execArgv: ["--nolazy", "--debug=6009"] };
+	let debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
 
 	// If the extension is launched in debug mode then the debug server options are used
 	// Otherwise the run options are used
 	let serverOptions: ServerOptions = {
-		run : { module: serverModule, transport: TransportKind.ipc },
+		run : { module: serverModule, transport: TransportKind.ipc, options: debugOptions },
 		debug: { module: serverModule, transport: TransportKind.ipc, options: debugOptions }
 	};
 
